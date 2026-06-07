@@ -151,7 +151,6 @@ form.addEventListener('submit', function(e) {
         isValid = false;
     }
 
-    // Username
     if (username === '') {
         showError('err-username', 'Username is required.');
         isValid = false;
@@ -174,7 +173,6 @@ form.addEventListener('submit', function(e) {
         }
     }
 
-    // Confirm Password
     if (confVal === '') {
         showError('err-confirm', 'Please confirm your password.');
         isValid = false;

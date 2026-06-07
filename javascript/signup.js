@@ -1,0 +1,223 @@
+const form     = document.querySelector('form');
+const password = document.getElementById('password');
+const confirm  = document.getElementById('confirm_password');
+const birth    = document.getElementById('birth');
+
+const fields = [
+    'firstname', 'lastname', 'birth',
+    'email', 'tel', 'username',
+    'password', 'confirm_password'
+];
+
+fields.forEach((id, index) => {
+    document.getElementById(id).addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            const next = fields[index + 1];
+            if (next) {
+                document.getElementById(next).focus();
+            } else {
+                form.dispatchEvent(new Event('submit'));
+            }
+        }
+    });
+});
+
+function showError(id, message) {
+    const el = document.getElementById(id);
+    el.textContent = message;
+    el.style.display = 'block';
+}
+
+function clearError(id) {
+    const el = document.getElementById(id);
+    el.textContent = '';
+    el.style.display = 'none';
+}
+
+function clearAllErrors() {
+    document.querySelectorAll('.error-msg').forEach(el => {
+        el.textContent = '';
+        el.style.display = 'none';
+    });
+}
+
+document.getElementById('eye1').addEventListener('click', function() {
+    password.type = password.type === 'password' ? 'text' : 'password';
+    this.textContent = password.type === 'text' ? '🙈' : '👁';
+});
+password.addEventListener('input', function() {
+    const val = this.value;
+
+    const l = val.length >= 6;
+    const u = /[A-Z]/.test(val);
+    const n = /[0-9]/.test(val);
+    const s = /[!@#$%^&*]/.test(val);
+
+    document.getElementById('cond-length').className  = l ? 'ok' : '';
+    document.getElementById('cond-upper').className   = u ? 'ok' : '';
+    document.getElementById('cond-number').className  = n ? 'ok' : '';
+    document.getElementById('cond-special').className = s ? 'ok' : '';
+
+    const conditions = document.querySelector('.conditions');
+    if (val.length === 0 || (l && u && n && s)) {
+        conditions.classList.remove('visible');
+    } else {
+        conditions.classList.add('visible');
+    }
+
+    if (val.length > 0) clearError('err-password');
+});
+
+['firstname', 'lastname', 'email', 'tel', 'username'].forEach(id => {
+    document.getElementById(id).addEventListener('input', function() {
+        if (this.value.trim().length > 0) clearError('err-' + id);
+    });
+});
+
+birth.addEventListener('change', function() {
+    if (this.value !== '') clearError('err-birth');
+});
+
+confirm.addEventListener('input', function() {
+    if (this.value === password.value) clearError('err-confirm');
+});
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    clearAllErrors();
+
+    let isValid = true;
+
+    const firstname = document.getElementById('firstname').value.trim();
+    const lastname  = document.getElementById('lastname').value.trim();
+    const birthVal  = document.getElementById('birth').value;
+    const email     = document.getElementById('email').value.trim();
+    const tel       = document.getElementById('tel').value.trim();
+    const username  = document.getElementById('username').value.trim();
+    const passVal   = password.value;
+    const confVal   = confirm.value;
+    const terms     = document.getElementById('terms').checked;
+
+
+    if (firstname === '') {
+        showError('err-firstname', 'First name is required.');
+        isValid = false;
+    } else if (!/^[a-zA-ZÀ-ÿ\s\-]{2,}$/.test(firstname)) {
+        showError('err-firstname', 'First name must contain at least 2 letters.');
+        isValid = false;
+    }
+
+    if (lastname === '') {
+        showError('err-lastname', 'Last name is required.');
+        isValid = false;
+    } else if (!/^[a-zA-ZÀ-ÿ\s\-]{2,}$/.test(lastname)) {
+        showError('err-lastname', 'Last name must contain at least 2 letters.');
+        isValid = false;
+    }
+
+    // Date of Birth
+    if (birthVal === '') {
+        showError('err-birth', 'Date of birth is required.');
+        isValid = false;
+    } else {
+        const birthDate = new Date(birthVal);
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
+        if (age < 18) {
+            showError('err-birth', 'You must be at least 18 years old.');
+            isValid = false;
+        }
+    }
+
+
+    if (email === '') {
+        showError('err-email', 'Email address is required.');
+        isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showError('err-email', 'Please enter a valid email address.');
+        isValid = false;
+    }
+
+
+    if (tel === '') {
+        showError('err-tel', 'Phone number is required.');
+        isValid = false;
+    } else if (!/^[0-9]{10}$/.test(tel)) {
+        showError('err-tel', 'Phone number must contain exactly 10 digits.');
+        isValid = false;
+    }
+
+    if (username === '') {
+        showError('err-username', 'Username is required.');
+        isValid = false;
+    } else if (username.length < 3) {
+        showError('err-username', 'Username must be at least 3 characters.');
+        isValid = false;
+    }
+
+
+    if (passVal === '') {
+        showError('err-password', 'Password is required.');
+        isValid = false;
+    } else {
+        const l = passVal.length >= 6;
+        const u = /[A-Z]/.test(passVal);
+        const n = /[0-9]/.test(passVal);
+        const s = /[!@#$%^&*]/.test(passVal);
+        if (!l || !u || !n || !s) {
+            showError('err-password', 'Password does not meet the requirements.');
+            isValid = false;
+        }
+    }
+
+
+    if (confVal === '') {
+        showError('err-confirm', 'Please confirm your password.');
+        isValid = false;
+    } else if (confVal !== passVal) {
+        showError('err-confirm', 'Passwords do not match.');
+        isValid = false;
+    }
+    if (!terms) {
+        showError('err-terms', 'You must accept the terms and conditions.');
+        isValid = false;
+    }
+
+    if (!isValid) return;
+
+
+    const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
+
+    if (existingUsers.some(u => u.email === email)) {
+        showError('err-email', 'This email is already registered.');
+        return;
+    }
+    if (existingUsers.some(u => u.username === username)) {
+        showError('err-username', 'This username is already taken.');
+        return;
+    }
+
+
+    const newUser = {
+        firstname, lastname,
+        birth: birthVal,
+        email, phone: tel,
+        username,
+        password: passVal
+    };
+
+    existingUsers.push(newUser);
+    localStorage.setItem('users', JSON.stringify(existingUsers));
+    localStorage.setItem('currentUser', JSON.stringify({
+        username: newUser.username,
+        firstname: newUser.firstname,
+        email: newUser.email
+    }));
+
+    document.getElementById('username-display').textContent = ', ' + username;
+    document.querySelector('form').classList.add('hidden');
+    document.getElementById('welcome-screen').classList.remove('hidden');
+});

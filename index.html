@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CinéStream</title>
+  <link rel="stylesheet" href="style/index.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+ 
+  <div class="video-wrapper">
+    <video id="bg-video" autoplay muted loop playsinline>
+      <source src="image/indexvideo.mp4" type="video/mp4" />
+    </video>
+    <div class="video-overlay"></div>
+  </div>
+
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">
+      <span class="logo-icon">▶</span>
+      <span class="logo-text">CINÉ<span class="logo-accent">STREAM</span></span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="nav-link active" data-label="HOME">Home</a></li>
+      <li><a href="content/movie.html" class="nav-link" data-label="MOVIES">Movies</a></li>
+      <li><a href="content/essa.html" class="nav-link" data-label="SIGN IN">Sign In</a></li>
+      <li><a href="content/signup.html" class="nav-btn">Sign Up</a></li>
+    
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+ 
+  <main class="hero">
+    <div class="hero-content">
+      <p class="hero-tag">Bienvenue sur</p>
+      <h1 class="hero-title">CINEORA</h1>
+      <p class="hero-subtitle">Découvrez des milliers de films &amp; séries en streaming illimité.</p>
+      <div class="hero-actions">
+        <a href="content/movie.html" class="btn-primary">▶ Explorer les films</a>
+        <a href="content/essa.html" class="btn-secondary">Créer un compte</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </main>
+
+  <script src="javascript/index.js"></script>
+</body>
+</html>

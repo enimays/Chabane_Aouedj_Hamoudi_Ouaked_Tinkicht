@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CINEORA Reservation</title>
+  <link rel="stylesheet" href="../style/reservation.css">
+</head>
+<body>
+
+<div class="container">
+
+  <h1>🎬 CINEORA Reservation</h1>
+
+  <div id="movieInfo"></div>
+
+  <!-- STEP 1 -->
+  <div id="step1" class="step active">
+
+    <h2>1. Choose Session</h2>
+
+    <label>Salle</label>
+    <select id="salle">
+      <option>A</option>
+      <option>B</option>
+      <option>C</option>
+      <option>D</option>
+      <option>E</option>
+      <option>F</option>
+      <option>G</option>
+    </select>
+
+    <label>Session</label>
+    <select id="session"></select>
+
+    <button onclick="goStep2()">Continue</button>
+  </div>
+
+  <!-- STEP 2 -->
+  <div id="step2" class="step">
+
+    <h2>2. Tickets</h2>
+
+    <label>Adults (100 DA)</label>
+    <input type="number" id="adult" value="0" min="0">
+
+    <label>Kids (50 DA)</label>
+    <input type="number" id="kid" value="0" min="0">
+
+    <label>Students (70 DA)</label>
+    <input type="number" id="student" value="0" min="0">
+
+    <h3>Total: <span id="total">0</span> DA</h3>
+
+    <button onclick="goStep3()">Continue</button>
+  </div>
+
+  <!-- STEP 3 -->
+  <div id="step3" class="step">
+
+    <h2>3. Payment</h2>
+
+    <input id="name" placeholder="Name on card">
+    <input id="card" placeholder="Card number">
+    <input id="exp" placeholder="MM/YY">
+    <input id="cvv" placeholder="CVV">
+
+    <button onclick="confirmTicket()">Confirm Ticket</button>
+  </div>
+
+  <!-- STEP 4 -->
+  <div id="step4" class="step">
+    <h2>🎉 Ticket Confirmed</h2>
+    <div id="ticket"></div>
+  </div>
+
+</div>
+
+<script src="../javascript/reservation.js"></script>
+</body>
+</html>

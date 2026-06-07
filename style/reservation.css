@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  background: #0a0a0a;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  width: 430px;
+  background: #141414;
+  padding: 22px;
+  border-radius: 14px;
+  position: relative;
+  box-shadow: 0 0 30px rgba(229, 9, 20, 0.25);
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 16px;
+  background: linear-gradient(120deg, #ff0000, #E50914, #ff4d4d, #8b0000);
+  z-index: -1;
+  filter: blur(10px);
+  opacity: 0.6;
+}
+
+h1 {
+  text-align: center;
+  color: #E50914;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+
+.step {
+  display: none;
+  flex-direction: column;
+}
+
+.step.active {
+  display: flex;
+}
+
+
+input, select {
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: none;
+  background: #1f1f1f;
+  color: white;
+  outline: none;
+}
+
+input:focus, select:focus {
+  box-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+}
+
+
+button {
+  margin-top: 12px;
+  padding: 12px;
+  background: #E50914;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+button:hover {
+  background: #ff1a1a;
+}
+
+
+#movieInfo {
+  background: #1f1f1f;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-left: 4px solid #E50914;
+  border-radius: 8px;
+}
+
+
+#ticket {
+  background: #1f1f1f;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(229, 9, 20, 0.3);
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CINEORA – Catalog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style/movie.css">
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">🎬 CINEORA</div>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="movie.html" class="nav-active">MOVIE</a></li>
+        
+        <li><a href="signup.html">Sign Up</a></li>
+        <li><a href="essa.html" class="sign-in-btn">Sign In</a></li>
+        
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-gradient"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><circle cx="5" cy="5" r="5"/></svg>
+        Now Streaming
+      </div>
+      <h1 class="hero-title">Your Cinema,<br>Your Rules.</h1>
+      <p class="hero-sub">Explore 83+ hand-picked films spanning action, drama, romance, animation and beyond — from Algeria to Japan.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><span>83+</span><p>Titles</p></div>
+        <div class="hero-stat"><span>9</span><p>Genres</p></div>
+        <div class="hero-stat"><span>6</span><p>Regions</p></div>
+      </div>
+    </div>
+  </section>
+
+  <main class="main-layout">
+
+    <header class="top-bar">
+      <div class="search-wrapper" id="searchWrapper">
+        <button class="search-icon-btn" id="searchToggleBtn" aria-label="Toggle Search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+        <input type="text" id="search-input" placeholder="Search movies...">
+      </div>
+
+      <div class="filters-container">
+        <div class="filter-row" id="categories-row">
+          <button class="btn active" data-cat="All">All Categories</button>
+          <button class="btn" data-cat="Romance">Romance</button>
+          <button class="btn" data-cat="Horror">Horror</button>
+          <button class="btn" data-cat="Animation">Animation</button>
+          <button class="btn" data-cat="Adventure">Adventure</button>
+          <button class="btn" data-cat="Science Fiction">Sci-Fi</button>
+          <button class="btn" data-cat="Action">Action</button>
+          <button class="btn" data-cat="Drama">Drama</button>
+        </div>
+        <div class="filter-row" id="regions-row">
+          <button class="btn active" data-reg="All">All Regions</button>
+          <button class="btn" data-reg="USA">USA</button>
+          <button class="btn" data-reg="UK">UK</button>
+          <button class="btn" data-reg="Algeria">Algeria</button>
+          <button class="btn" data-reg="Spain">Spain</button>
+          <button class="btn" data-reg="Japan">Japan</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="section-label">
+      Browse All
+      <span class="count-badge" id="count-badge">83 titles</span>
+    </div>
+
+    <section class="movie-grid" id="films"></section>
+
+  </main>
+
+  <script src="../javascript/movie.js"></script>
+</body>
+</html>

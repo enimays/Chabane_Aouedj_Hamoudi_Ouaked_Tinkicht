@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Cineora</title>
+    <link rel="stylesheet" href="../style/ess.css">
+</head>  
+<body>    
+    <nav class="navbar">
+        <div class="nav-logo"> 🎬CINEORA </div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="movie.html">Movies</a></li>
+            <li><a href="essa.html" class="nav-active">Sign In</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+    </nav>
+    
+<div class="login-container">
+    <form class="login-box"> 
+        <h1> Login 🎬</h1>  
+        <label for="username"> Username</label>
+        <input
+            type="text"
+            id="username"
+            placeholder="enter your username"
+            name="username"
+            required
+            oninvalid="this.setCustomValidity('Please fill out this field.')"
+            oninput="this.setCustomValidity('')">
+
+        
+        <label for="password">Password</label>
+        <input
+            type="password"
+            id="password"
+            placeholder=" enter your password"
+            name="password"
+            required
+            oninvalid="this.setCustomValidity('Please fill out this field.')"
+            oninput="this.setCustomValidity('')">
+
+        <div class="remember">
+            <input type="checkbox" id="check">
+            <label for="check">Remember me</label>
+        </div>
+
+        <button type="submit">Sign in</button>
+        <p id="message"></p>
+        <a href="#" class="forgot">Forgot password?</a>
+
+        <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+    </form>
+</div>
+<script src="../javascript/script.js"></script>
+</body>
+</html>

@@ -217,7 +217,5 @@ form.addEventListener('submit', function(e) {
         email: newUser.email
     }));
 
-    document.getElementById('username-display').textContent = ', ' + username;
-    document.querySelector('form').classList.add('hidden');
-    document.getElementById('welcome-screen').classList.remove('hidden');
+    window.location.href = 'movie.html';
 });

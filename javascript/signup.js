@@ -17,7 +17,7 @@ fields.forEach((id, index) => {
             if (next) {
                 document.getElementById(next).focus();
             } else {
-                form.dispatchEvent(new Event('submit'));
+                form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
             }
         }
     });
@@ -46,6 +46,7 @@ document.getElementById('eye1').addEventListener('click', function() {
     password.type = password.type === 'password' ? 'text' : 'password';
     this.textContent = password.type === 'text' ? '🙈' : '👁';
 });
+
 password.addEventListener('input', function() {
     const val = this.value;
 
@@ -82,7 +83,6 @@ birth.addEventListener('change', function() {
 confirm.addEventListener('input', function() {
     if (this.value === password.value) clearError('err-confirm');
 });
-
 form.addEventListener('submit', function(e) {
     e.preventDefault();
     clearAllErrors();
@@ -99,7 +99,7 @@ form.addEventListener('submit', function(e) {
     const confVal   = confirm.value;
     const terms     = document.getElementById('terms').checked;
 
-
+    // First Name
     if (firstname === '') {
         showError('err-firstname', 'First name is required.');
         isValid = false;
@@ -108,6 +108,7 @@ form.addEventListener('submit', function(e) {
         isValid = false;
     }
 
+    // Last Name
     if (lastname === '') {
         showError('err-lastname', 'Last name is required.');
         isValid = false;
@@ -132,7 +133,7 @@ form.addEventListener('submit', function(e) {
         }
     }
 
-
+    // Email
     if (email === '') {
         showError('err-email', 'Email address is required.');
         isValid = false;
@@ -141,7 +142,7 @@ form.addEventListener('submit', function(e) {
         isValid = false;
     }
 
-
+    
     if (tel === '') {
         showError('err-tel', 'Phone number is required.');
         isValid = false;
@@ -150,6 +151,7 @@ form.addEventListener('submit', function(e) {
         isValid = false;
     }
 
+    // Username
     if (username === '') {
         showError('err-username', 'Username is required.');
         isValid = false;
@@ -157,7 +159,6 @@ form.addEventListener('submit', function(e) {
         showError('err-username', 'Username must be at least 3 characters.');
         isValid = false;
     }
-
 
     if (passVal === '') {
         showError('err-password', 'Password is required.');
@@ -173,7 +174,7 @@ form.addEventListener('submit', function(e) {
         }
     }
 
-
+    // Confirm Password
     if (confVal === '') {
         showError('err-confirm', 'Please confirm your password.');
         isValid = false;
@@ -181,13 +182,14 @@ form.addEventListener('submit', function(e) {
         showError('err-confirm', 'Passwords do not match.');
         isValid = false;
     }
+
+    
     if (!terms) {
         showError('err-terms', 'You must accept the terms and conditions.');
         isValid = false;
     }
 
     if (!isValid) return;
-
 
     const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
 
@@ -199,8 +201,6 @@ form.addEventListener('submit', function(e) {
         showError('err-username', 'This username is already taken.');
         return;
     }
-
-
     const newUser = {
         firstname, lastname,
         birth: birthVal,

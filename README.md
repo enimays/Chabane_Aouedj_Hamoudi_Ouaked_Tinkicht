@@ -152,13 +152,13 @@ Ce projet permet de mettre en pratique :
 ---
 
 ## 👥 Membres du Groupe
-
-- Aouedj Titem
-- Chabane Yasmine
-- Hamoudi Lynda
-- Ouaked Romaissa
-- Tinkicht Ryma
-
+| Nom | Prénom | Groupe |
+|-----|--------|--------|
+| Aouedj | Titem |   2    |
+| Chabane | Yasmine |   2    |
+| Hamoudi | Lynda |   5    |
+| Ouaked | Romaissa |   5    |
+| Tinkicht | Ryma |   5    |
 ---
 
 ## 🔗 Dépôt GitHub

@@ -79,15 +79,18 @@ L'application permet aux utilisateurs de consulter les films à l'affiche, de fi
 ```
 CineOra/
 │
-├── index.html           # 🏠 Accueil — liste des films & intro
-├── signup.html          # 📝 Page d'inscription
-├── essa.html            # 🔐 Page de connexion
-├── reservation.html     # 🎟️ Interface de réservation et paiement
+├── index.html               # 🏠 Accueil — liste des films & intro
+├── README.md
+├── readme.txt
 │
-├── content/             # Contenu des pages & templates
-├── image/               # Affiches de films & ressources visuelles
-├── javascript/          # Logique applicative & manipulation du DOM
-└── style/               # Feuilles de style CSS
+├── content/                 # Pages HTML secondaires
+│   ├── signup.html          # 📝 Page d'inscription
+│   ├── essa.html            # 🔐 Page de connexion
+│   └── reservation.html     # 🎟️ Interface de réservation et paiement
+│
+├── image/                   # Affiches de films & ressources visuelles
+├── javascript/              # Logique applicative & manipulation du DOM
+└── style/                   # Feuilles de style CSS
 ```
 
 <br/>
@@ -193,8 +196,6 @@ open index.html   # macOS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   🍿                               🍿
 ```
-
-Réalisé avec ❤️ par l'équipe CineOra · UMMTO 2025/2026
 
 *Département d'Informatique — Faculté de Génie Électrique et Informatique*
 
